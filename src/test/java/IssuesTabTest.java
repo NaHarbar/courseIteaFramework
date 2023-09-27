@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class IssuesTabTest extends BaseTestClass {
@@ -16,7 +15,7 @@ public class IssuesTabTest extends BaseTestClass {
     }
 
     @Test
-    public void openIssueTab() {
+    public void verifyIssueTabCanBeOpened() {
         CodeTabPage codeTabPage = new CodeTabPage(driver);
         codeTabPage
                 .openIssueTabPage()
@@ -39,7 +38,7 @@ public class IssuesTabTest extends BaseTestClass {
     }
 
     @Test
-    public void createNewIssue() {
+    public void verifyNewIssueCanBeCreated() {
         final String titleValue = "Test 1";
         final String commentValue = "Create Comment";
 

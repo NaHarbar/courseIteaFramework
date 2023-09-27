@@ -63,12 +63,10 @@ public class IssueTabPage extends BasePage {
         return this;
     }
 
-
     public IssueTabPage clickOnOpenIssueWithTitle(String titleValue) {
         driver.findElement(By.xpath(openIssueTitleLocator.formatted(titleValue))).click();
         return this;
     }
-
 
     public IssueTabPage closeCommentInputVisible() {
         Assertions.assertTrue(driver.findElement(newCommentInputLocator).isDisplayed());
