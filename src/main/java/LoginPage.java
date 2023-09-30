@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
+    private final static String TITLE = "Login page";
     private final By loginFieldLocator = By.id("login_field");
     private final By passwordFieldLocator = By.id("password");
     private final By logInButtonLocator = By.xpath("//input[@value='Sign in']");
@@ -11,7 +12,7 @@ public class LoginPage extends BasePage {
     private final By errorTextLocator = By.xpath("//div[contains(text(),'Incorrect username or password.')]");
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public WebElement getLogo() {

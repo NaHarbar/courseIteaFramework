@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CreateIssuePage extends BasePage {
+    private final static String TITLE = "Create issue page";
     private final By titleInputLocator = By.id("issue_title");
     private final By commentInputLocator = By.id("issue_body");
     private final By avatarLogoLocator = By.xpath("//img[@class='avatar avatar-user']");
@@ -10,7 +11,7 @@ public class CreateIssuePage extends BasePage {
     private final By issueTitleLocator = By.xpath("//bdi[@class='js-issue-title markdown-title']");
 
     public CreateIssuePage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public CreateIssuePage titleIsVisible() {
