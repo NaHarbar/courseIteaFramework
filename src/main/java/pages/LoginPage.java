@@ -1,7 +1,12 @@
-import org.junit.jupiter.api.Assertions;
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class LoginPage extends BasePage {
     private final By loginFieldLocator = By.id("login_field");
@@ -33,14 +38,14 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage validateErrorMessage(String expectedMessage) {
-        Assertions.assertEquals(expectedMessage, driver.findElement(errorTextLocator).getText(), "Actual error text not matched with expected message");
+        assertEquals(expectedMessage, driver.findElement(errorTextLocator).getText(), "Actual error text not matched with expected message");
         return this;
     }
 
     public LoginPage validateAuthFieldsAreDisplayed() {
-        Assertions.assertTrue(driver.findElement(loginFieldLocator).isDisplayed());
-        Assertions.assertTrue(driver.findElement(passwordFieldLocator).isDisplayed());
-        Assertions.assertTrue(driver.findElement(logInButtonLocator).isDisplayed());
+        assertTrue(driver.findElement(loginFieldLocator).isDisplayed());
+        assertTrue(driver.findElement(passwordFieldLocator).isDisplayed());
+        assertTrue(driver.findElement(logInButtonLocator).isDisplayed());
         return this;
     }
 }

@@ -1,9 +1,13 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+package ui;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.CodeTabPage;
+import pages.HomePage;
 
 public class IssuesTabTest extends BaseTestClass {
 
-    @BeforeEach
+    @BeforeMethod
     public void openRepository() {
         final String repositoryName = "TestRepository";
 

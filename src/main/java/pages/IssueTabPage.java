@@ -1,6 +1,8 @@
-import org.junit.jupiter.api.Assertions;
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class IssueTabPage extends BasePage {
 
@@ -39,22 +41,22 @@ public class IssueTabPage extends BasePage {
     }
 
     public IssueTabPage newIssueButtonVisible() {
-        Assertions.assertTrue(driver.findElement(newIssueLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(newIssueLocator).isDisplayed());
         return this;
     }
 
     public IssueTabPage verifySearchIssueVisible() {
-        Assertions.assertTrue(driver.findElement(searchIssueLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(searchIssueLocator).isDisplayed());
         return this;
     }
 
     public IssueTabPage verifyIssueStatusOpen() {
-        Assertions.assertTrue(driver.findElement(issueOpenStatusLocator).isDisplayed(), "Issue status isn't open");
+        Assert.assertTrue(driver.findElement(issueOpenStatusLocator).isDisplayed(), "Issue status isn't open");
         return this;
     }
 
     public IssueTabPage verifyIssueStatusClosed() {
-        Assertions.assertTrue(driver.findElement(issueClosedStatusLocator).isDisplayed(), "Issue status isn't closed");
+        Assert.assertTrue(driver.findElement(issueClosedStatusLocator).isDisplayed(), "Issue status isn't closed");
         return this;
     }
 
@@ -69,7 +71,7 @@ public class IssueTabPage extends BasePage {
     }
 
     public IssueTabPage closeCommentInputVisible() {
-        Assertions.assertTrue(driver.findElement(newCommentInputLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(newCommentInputLocator).isDisplayed());
         return this;
     }
 
@@ -79,47 +81,47 @@ public class IssueTabPage extends BasePage {
     }
 
     public IssueTabPage checkCreatedIssueComment(String commentValue) {
-        Assertions.assertEquals(driver.findElement(issueCommentLocator).getText(), commentValue, "Issue comment not matched");
+        Assert.assertEquals(driver.findElement(issueCommentLocator).getText(), commentValue, "Issue comment not matched");
         return this;
     }
 
     public IssueTabPage checkCloseIssueComment(String commentValue) {
-        Assertions.assertEquals(driver.findElement(issueCloseCommentLocator).getText(), commentValue, "Close Issue comment not matched");
+        Assert.assertEquals(driver.findElement(issueCloseCommentLocator).getText(), commentValue, "Close Issue comment not matched");
         return this;
     }
 
     public IssueTabPage closeIssueButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(closeIssueButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(closeIssueButtonLocator).isEnabled());
         return this;
     }
 
     public IssueTabPage closeWithCommentButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(closeWithCommentButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(closeWithCommentButtonLocator).isEnabled());
         return this;
     }
 
     public IssueTabPage checkReopenIconVisible() {
-        Assertions.assertTrue(driver.findElement(reopenIconLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(reopenIconLocator).isDisplayed());
         return this;
     }
 
     public IssueTabPage reopenIssueButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(reopenIssueButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(reopenIssueButtonLocator).isEnabled());
         return this;
     }
 
     public IssueTabPage reopenWithCommentButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(reopenWithButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(reopenWithButtonLocator).isEnabled());
         return this;
     }
 
     public IssueTabPage verifyCommentButtonDisabled() {
-        Assertions.assertEquals(driver.findElement(commentButtonLocator).getAttribute("disabled"), "true", "Comment is enabled");
+        Assert.assertEquals(driver.findElement(commentButtonLocator).getAttribute("disabled"), "true", "Comment is enabled");
         return this;
     }
 
     public IssueTabPage verifyCommentButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(commentButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(commentButtonLocator).isEnabled());
         return this;
     }
 
@@ -151,7 +153,7 @@ public class IssueTabPage extends BasePage {
     public IssueTabPage deleteIssue(String message) {
         driver.findElement(deleteIssueLocator).click();
         driver.findElement(confirmDeleteIssueLocator).click();
-        Assertions.assertEquals(driver.findElement(deleteIssueMessageLocator).getText(), message, "Confirmation message doesn't matched");
+        Assert.assertEquals(driver.findElement(deleteIssueMessageLocator).getText(), message, "Confirmation message doesn't matched");
         return this;
     }
 
@@ -166,7 +168,7 @@ public class IssueTabPage extends BasePage {
     }
 
     public IssueTabPage verifyLeavedComment(String commentValue) {
-        Assertions.assertTrue(driver.findElement(By.xpath(taskListCommentLocator.formatted(commentValue))).isDisplayed(), "Comment message isn't visible");
+        Assert.assertTrue(driver.findElement(By.xpath(taskListCommentLocator.formatted(commentValue))).isDisplayed(), "Comment message isn't visible");
         return this;
     }
 
@@ -182,7 +184,7 @@ public class IssueTabPage extends BasePage {
     }
 
     public IssueTabPage verifyLabelForIssue(String label) {
-        Assertions.assertEquals(driver.findElement(selectedLabelLocator).getText(), label, "Label value doesn't matched");
+        Assert.assertEquals(driver.findElement(selectedLabelLocator).getText(), label, "Label value doesn't matched");
         return this;
     }
 
