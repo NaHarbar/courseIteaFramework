@@ -7,13 +7,14 @@ import org.testng.Assert;
 
 public class CreateNewRepositoryPage extends BasePage {
     private final static String TYPE_VALUE_LOCATOR = "//div[contains(@class, 'CheckboxOrRadioGroup')]//input[@value='%s']";
+    private final static String TITLE = "Create New Repository page";
     private final By pageTitleLocator = By.xpath("//h1[contains(text(),'Create a new repository')]");
     private final By confirmNameAvailableNameLocator = By.id("RepoNameInput-is-available");
     private final By repositoryNameInputLocator = By.xpath("//input[@aria-label = 'Repository']");
     private final By createRepositoryButtonLocator = By.xpath("//button[@type='submit']//span[text()='Create repository']");
 
     public CreateNewRepositoryPage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public CreateNewRepositoryPage verifyPageTitleLocator() {

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class SettingsPage extends BasePage {
+    private final static String TITLE = "Settings Page";
     private final By deleteThisRepositoryLocator = By.id("dialog-show-repo-delete-menu-dialog");
     private final By wantDeleteRepositoryButtonLocator = By.id("repo-delete-proceed-button");
     private final By understandEffectsButtonLocator = By.id("repo-delete-proceed-button-container");
@@ -15,7 +16,7 @@ public class SettingsPage extends BasePage {
     private final By wantDeleteRepositoryLabelLocator = By.xpath("//button[@id='repo-delete-proceed-button']//span[@class='Button-label']");
 
     public SettingsPage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public SettingsPage verifySubHeader() {

@@ -1,7 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import org.testng.Assert;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -58,14 +55,14 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage validateErrorMessage(String expectedMessage) {
-        assertEquals(expectedMessage, driver.findElement(errorTextLocator).getText(), "Actual error text not matched with expected message");
+        assertEquals(expectedMessage, errorText.getText(), "Actual error text not matched with expected message");
         return this;
     }
 
     public LoginPage validateAuthFieldsAreDisplayed() {
-        Assertions.assertTrue(loginField.isDisplayed());
-        Assertions.assertTrue(passwordField.isDisplayed());
-        Assertions.assertTrue(logInButton.isDisplayed());
+        assertTrue(loginField.isDisplayed());
+        assertTrue(passwordField.isDisplayed());
+        assertTrue(logInButton.isDisplayed());
         return this;
     }
 }

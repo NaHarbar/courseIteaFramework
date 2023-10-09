@@ -1,6 +1,5 @@
 package pages;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +29,7 @@ public class MainPage extends BasePage {
     }
 
     public ProfileForm goToProfileForm() {
-        Assertions.assertTrue(driver.findElement(imageLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(imageLocator).isDisplayed());
         driver.findElement(imageLocator).click();
         return new ProfileForm(driver);
     }

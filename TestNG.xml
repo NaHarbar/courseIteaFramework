@@ -3,9 +3,9 @@
 <suite name="Testing GitHubs" parallel="tests" thread-count="2">
     <test name="Regression">
         <classes>
-            <class name="ui.GitHubTest">
+           <class name="ui.GitHubTest">
                 <methods>
-                    <include name="verifyRepositoryCreationParametrized"></include>
+                   <include name="verifyRepositoryCreationParametrized"></include>
                     <include name="verifyDeleteRepositoryParametrized"></include>
 <!--                    <exclude name="thirdTestCase"></exclude>-->
                 </methods>
