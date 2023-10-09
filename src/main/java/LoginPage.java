@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage extends BasePage {
-
+    private final static String TITLE = "Login page";
     @FindBy(id = "login_field")
     private WebElement loginField;
 
@@ -26,9 +26,8 @@ public class LoginPage extends BasePage {
     private WebElement errorText;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
         super(driver, TITLE);
+        PageFactory.initElements(driver, this);
     }
 
     public WebElement getLogo() {
