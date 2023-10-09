@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,12 @@ public class MainPage extends BasePage {
         driver.findElement(searchRepositoryLocator).sendKeys(name);
         driver.findElement(By.xpath(searchResultLocator.formatted(name))).click();
         return new CodeTabPage(driver);
+    }
+
+    public ProfileForm goToProfileForm() {
+        Assertions.assertTrue(driver.findElement(imageLocator).isDisplayed());
+        driver.findElement(imageLocator).click();
+        return new ProfileForm(driver);
     }
 
 }
