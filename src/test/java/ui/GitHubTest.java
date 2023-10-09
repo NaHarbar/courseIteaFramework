@@ -51,7 +51,7 @@ public class GitHubTest extends BaseTestClass {
 
     }
 
-    @DataProvider(name = "testDataProvider")
+    @DataProvider(name = "repositoriesDataProviders")
     public Object[][] createData() {
         return new Object[][]{
                 {"Private", "Private_Test"},
@@ -59,7 +59,7 @@ public class GitHubTest extends BaseTestClass {
         };
     }
 
-    @Test(dataProvider = "testDataProvider")
+    @Test(dataProvider = "repositoriesDataProviders")
     public void verifyRepositoryCreationParametrized(String type, String name) {
         HomePage homePage = new HomePage(driver);
         homePage.goToLoginPage().loginSuccessful("nataliia.rudenko2012@gmail.com", "nataliia.rudenko2012")
@@ -75,7 +75,7 @@ public class GitHubTest extends BaseTestClass {
                 .verifyRepositoryType(type);
     }
 
-    @Test(dataProvider = "testDataProvider")
+    @Test(dataProvider = "repositoriesDataProviders")
     public void verifyDeleteRepositoryParametrized(String type, String name) {
         HomePage homePage = new HomePage(driver);
         homePage.goToLoginPage()
