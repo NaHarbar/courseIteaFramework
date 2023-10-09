@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,8 +17,8 @@ public class CodeTabPage extends BasePage {
     }
 
     public CodeTabPage verifyRepositoryName(String name) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        wait.until(d -> driver.findElement(repositoryNameLocator).isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.presenceOfElementLocated(repositoryNameLocator));
         Assertions.assertEquals(driver.findElement(repositoryNameLocator).getText(), name);
         return this;
     }
