@@ -5,10 +5,14 @@ import org.testng.annotations.Test;
 import pages.CodeTabPage;
 import pages.HomePage;
 
+import static helpers.Level.INFO;
+import static helpers.PrinterColors.printColorMessage;
+
 public class IssuesTabTest extends BaseTestClass {
 
     @BeforeMethod
     public void openRepository() {
+        printColorMessage("New test was started", logger, INFO);
         final String repositoryName = "TestRepository";
 
         HomePage homePage = new HomePage(driver);
@@ -16,6 +20,7 @@ public class IssuesTabTest extends BaseTestClass {
                 .loginSuccessful("nataliia.rudenko2012@gmail.com", "nataliia.rudenko2012")
                 .openRepository(repositoryName)
                 .verifyRepositoryName(repositoryName);
+        logger.info("Repository was opened");
     }
 
     @Test
@@ -25,10 +30,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .openIssueTabPage()
                 .verifySearchIssueVisible()
                 .newIssueButtonVisible();
+        logger.info("The Issue tab has corresponding view");
     }
 
     @Test
-    public void checkCreateIssueFields() {
+    public void verifyCreateIssueFields() {
         CodeTabPage codeTabPage = new CodeTabPage(driver);
         codeTabPage
                 .openIssueTabPage()
@@ -39,6 +45,7 @@ public class IssuesTabTest extends BaseTestClass {
                 .verifySubmitButtonDisabled()
                 .verifyPlaceholderForTitleInput("Title")
                 .verifyPlaceholderForCommentInput("Leave a comment");
+        logger.info("Create Issue Page has corresponding view");
     }
 
     @Test
@@ -57,10 +64,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .verifyIssueCreated(titleValue)
                 .checkCreatedIssueComment(commentValue)
                 .verifyIssueStatusOpen();
+        logger.info("A new Issue was successfully created");
     }
 
     @Test
-    public void closeIssueWithoutComment() {
+    public void verifyCloseIssueWithoutComment() {
         final String titleValue = "Test 2";
         final String createCommentValue = "Create Comment";
 
@@ -76,11 +84,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .verifyCommentButtonDisabled()
                 .clickCloseIssue()
                 .verifyIssueStatusClosed();
-
+        logger.info("Issue was closed without comment");
     }
 
     @Test
-    public void closeIssueWithComment() {
+    public void verifyCloseIssueWithComment() {
         final String titleValue = "Test 3";
         final String createCommentValue = "Create Comment";
         final String closeCommentValue = "Close Comment";
@@ -100,10 +108,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .clickCloseWithComment()
                 .verifyIssueStatusClosed()
                 .checkCloseIssueComment(closeCommentValue);
+        logger.info("Issue was closed with comment {}", closeCommentValue);
     }
 
     @Test
-    public void reopenIssueWithoutComment() {
+    public void verifyReopenIssueWithoutComment() {
         final String titleValue = "Test 3";
         final String createCommentValue = "Create Comment";
 
@@ -122,6 +131,7 @@ public class IssuesTabTest extends BaseTestClass {
                 .clickReopenIssueButton()
                 .verifyIssueStatusOpen()
                 .checkReopenIconVisible();
+        logger.info("Issue {} was reopen without comment", titleValue);
     }
 
     @Test
@@ -146,10 +156,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .clickReopenWithCommentButton()
                 .verifyIssueStatusOpen()
                 .checkReopenIconVisible();
+        logger.info("Issue {} was reopen with comment", titleValue);
     }
 
     @Test
-    public void deleteOpenIssue() {
+    public void verifyAbilityToDeleteOpenIssue() {
         final String titleValue = "Test 5";
 
         CodeTabPage codeTabPage = new CodeTabPage(driver);
@@ -161,10 +172,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .verifyIssueCreated(titleValue)
                 .verifyIssueStatusOpen()
                 .deleteIssue("The issue was successfully deleted.");
+        logger.info("The open issue {} was deleted", titleValue);
     }
 
     @Test
-    public void deleteClosedIssue() {
+    public void verifyAbilityToDeleteClosedIssue() {
         final String titleValue = "Test 6";
 
         CodeTabPage codeTabPage = new CodeTabPage(driver);
@@ -184,10 +196,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .clickOnCloseIssueWithTitle(titleValue)
                 .verifyIssueStatusClosed()
                 .deleteIssue("The issue was successfully deleted.");
+        logger.info("The closed issue {} was deleted", titleValue);
     }
 
     @Test
-    public void leaveCommentsForOpenIssue() {
+    public void verifyAbilityToLeaveCommentsForOpenIssue() {
         final String titleValue = "Test 7";
         final String commentValue = "Comment 1 for issue";
 
@@ -207,10 +220,11 @@ public class IssuesTabTest extends BaseTestClass {
                 .verifyCommentButtonEnabled()
                 .clickCommentButton()
                 .verifyLeavedComment(commentValue);
+        logger.info("The open issue {}  has comment {}", titleValue, commentValue);
     }
 
     @Test
-    public void setLabelForOpenIssue() {
+    public void verifyAbilityToSetLabelForOpenIssue() {
         final String titleValue = "Test 8";
         final String labelValue = "good first issue";
 
@@ -225,5 +239,6 @@ public class IssuesTabTest extends BaseTestClass {
                 .setLabel(labelValue)
                 .closeLabelSelector()
                 .verifyLabelForIssue(labelValue);
+        logger.info("The issue {}  has label{}", titleValue, labelValue);
     }
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class IssueTabPage extends BasePage {
-
+    private final static String TITLE = "Issue tab page";
     private final static String openIssueTitleLocator = "//a[@data-hovercard-type='issue' and text()='%s']";
     private final static String closeIssueTitleLocator = "//a[@data-hovercard-type='issue' and text()='%s']";
     private final static String taskListCommentLocator = "//td[contains(@class, 'comment-body')]/p[text()='%s']";
@@ -32,7 +32,7 @@ public class IssueTabPage extends BasePage {
     private final By selectedLabelLocator = By.xpath("//div[contains(@class,'discussion-sidebar-item')]//a[contains(@id,'label')]");
 
     public IssueTabPage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
     }
 
     public CreateIssuePage createNewIssue() {

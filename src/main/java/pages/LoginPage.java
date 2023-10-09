@@ -1,39 +1,59 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import org.testng.Assert;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginPage extends BasePage {
-    private final By loginFieldLocator = By.id("login_field");
-    private final By passwordFieldLocator = By.id("password");
-    private final By logInButtonLocator = By.xpath("//input[@value='Sign in']");
-    private final By logoLocator = By.className("header-logo");
-    private final By errorTextLocator = By.xpath("//div[contains(text(),'Incorrect username or password.')]");
+    private final static String TITLE = "Login page";
+    @FindBy(id = "login_field")
+    private WebElement loginField;
+
+    @FindBy(id = "password")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//input[@value='Sign in']")
+    private WebElement logInButton;
+
+    @FindBy(className = "header-logo")
+    private WebElement logo;
+
+    @FindBy(xpath = "//div[contains(text(),'Incorrect username or password.')]")
+    private WebElement errorText;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, TITLE);
+        PageFactory.initElements(driver, this);
     }
 
     public WebElement getLogo() {
-        return driver.findElement(logoLocator);
+        return logo;
     }
 
     public MainPage loginSuccessful(String login, String password) {
-        driver.findElement(loginFieldLocator).sendKeys(login);
-        driver.findElement(passwordFieldLocator).sendKeys(password);
-        driver.findElement(logInButtonLocator).click();
+        loginField.sendKeys(login);
+        passwordField.sendKeys(password);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(logInButton));
+        logInButton.click();
         return new MainPage(driver);
     }
 
     public LoginPage negativeLogin(String login, String password) {
-        driver.findElement(loginFieldLocator).sendKeys(login);
-        driver.findElement(passwordFieldLocator).sendKeys(password);
-        driver.findElement(logInButtonLocator).click();
+        loginField.sendKeys(login);
+        passwordField.sendKeys(password);
+        logInButton.click();
         return this;
     }
 
@@ -43,9 +63,9 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage validateAuthFieldsAreDisplayed() {
-        assertTrue(driver.findElement(loginFieldLocator).isDisplayed());
-        assertTrue(driver.findElement(passwordFieldLocator).isDisplayed());
-        assertTrue(driver.findElement(logInButtonLocator).isDisplayed());
+        Assertions.assertTrue(loginField.isDisplayed());
+        Assertions.assertTrue(passwordField.isDisplayed());
+        Assertions.assertTrue(logInButton.isDisplayed());
         return this;
     }
 }
