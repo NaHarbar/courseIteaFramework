@@ -1,12 +1,16 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+package ui;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.CodeTabPage;
+import pages.HomePage;
 
 import static helpers.Level.INFO;
 import static helpers.PrinterColors.printColorMessage;
 
 public class IssuesTabTest extends BaseTestClass {
 
-    @BeforeEach
+    @BeforeMethod
     public void openRepository() {
         printColorMessage("New test was started", logger, INFO);
         final String repositoryName = "TestRepository";

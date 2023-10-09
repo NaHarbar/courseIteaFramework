@@ -1,5 +1,8 @@
+package pages;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,5 +21,6 @@ public class BasePage {
         webDriverWait = new WebDriverWait(driver, ofMillis(3));
         this.log = LogManager.getLogger(this.title);
         printColorMessage("Page object of " + title + this.getClass().getName(), log, DEBUG);
+        webDriverWait = new WebDriverWait(driver, ofMillis(5));
     }
 }

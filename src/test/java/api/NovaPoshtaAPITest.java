@@ -1,7 +1,7 @@
 package api;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.HashMap;
@@ -144,6 +144,6 @@ public class NovaPoshtaAPITest extends BaseApiTest {
                 .body()
                 .jsonPath()
                 .getList("data", DataAddress.class);
-        dataList.forEach(item -> Assertions.assertTrue(item.getAreaDescription().contains("Полтавська область")));
+        dataList.forEach(item -> Assert.assertTrue(item.getAreaDescription().contains("Полтавська область")));
     }
 }

@@ -1,6 +1,8 @@
-import org.junit.jupiter.api.Assertions;
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class CreateIssuePage extends BasePage {
     private final static String TITLE = "Create issue page";
@@ -15,32 +17,32 @@ public class CreateIssuePage extends BasePage {
     }
 
     public CreateIssuePage titleIsVisible() {
-        Assertions.assertTrue(driver.findElement(titleInputLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(titleInputLocator).isDisplayed());
         return this;
     }
 
     public CreateIssuePage commentInputVisible() {
-        Assertions.assertTrue(driver.findElement(commentInputLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(commentInputLocator).isDisplayed());
         return this;
     }
 
     public CreateIssuePage verifyAvatarLogoDisplayed() {
-        Assertions.assertTrue(driver.findElement(avatarLogoLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(avatarLogoLocator).isDisplayed());
         return this;
     }
 
     public CreateIssuePage verifySubmitButtonDisabled() {
-        Assertions.assertEquals(driver.findElement(submitNewIssueButtonLocator).getAttribute("disabled"), "true", "Field is not disabled");
+        Assert.assertEquals(driver.findElement(submitNewIssueButtonLocator).getAttribute("disabled"), "true", "Field is not disabled");
         return this;
     }
 
     public CreateIssuePage verifyPlaceholderForTitleInput(String placeholder) {
-        Assertions.assertEquals(driver.findElement(titleInputLocator).getAttribute("placeholder"), placeholder, "Placeholder is not matched");
+        Assert.assertEquals(driver.findElement(titleInputLocator).getAttribute("placeholder"), placeholder, "Placeholder is not matched");
         return this;
     }
 
     public CreateIssuePage verifyPlaceholderForCommentInput(String placeholder) {
-        Assertions.assertEquals(driver.findElement(commentInputLocator).getAttribute("placeholder"), placeholder, "Placeholder is not matched");
+        Assert.assertEquals(driver.findElement(commentInputLocator).getAttribute("placeholder"), placeholder, "Placeholder is not matched");
         return this;
     }
 
@@ -55,7 +57,7 @@ public class CreateIssuePage extends BasePage {
     }
 
     public CreateIssuePage verifySubmitIssueButtonEnabled() {
-        Assertions.assertTrue(driver.findElement(submitNewIssueButtonLocator).isEnabled());
+        Assert.assertTrue(driver.findElement(submitNewIssueButtonLocator).isEnabled());
         return this;
     }
 
@@ -65,7 +67,7 @@ public class CreateIssuePage extends BasePage {
     }
 
     public IssueTabPage verifyIssueCreated(String titleValue) {
-        Assertions.assertEquals(driver.findElement(issueTitleLocator).getText(), titleValue, "Title value not matched");
+        Assert.assertEquals(driver.findElement(issueTitleLocator).getText(), titleValue, "Title value not matched");
         return new IssueTabPage(driver);
     }
 
